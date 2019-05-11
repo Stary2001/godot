@@ -119,6 +119,8 @@ void AudioDriverSwitch::thread_func(void *p_udata) {
 	
 	AudioDriverSwitch *ad = (AudioDriverSwitch *)p_udata;
 
+	svcSetThreadPriority(CUR_THREAD_HANDLE, 0x2B);
+
 	while (!ad->exit_thread) {
 
 		ad->lock();
@@ -152,14 +154,10 @@ void AudioDriverSwitch::thread_func(void *p_udata) {
 			if (!audrvVoiceIsPlaying(&ad->audren_driver, 0)) {
 				audrvVoiceStart(&ad->audren_driver, 0);
 			}
-			//printf("aud: buf[%i] = %i\n", free_buffer, ad->buffer_size);
 			audrvUpdate(&ad->audren_driver);
 			audrenWaitFrame();
 			while (ad->audren_buffers[free_buffer].state != AudioDriverWaveBufState_Playing) {
 				audrvUpdate(&ad->audren_driver);
-				//audrenWaitFrame();
-				// audio thread too speed?
-				OS::get_singleton()->delay_usec(100);
 			}
 		} else {
 			//printf("aud: no free buffer\n");
