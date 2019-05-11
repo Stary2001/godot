@@ -4,6 +4,7 @@
 #include "context_gl_switch_egl.h"
 #include "servers/visual/visual_server_raster.h"
 #include "joypad_switch.h"
+#include "audio_driver_switch.h"
 #include "main/input_default.h"
 
 class OS_Switch : public OS
@@ -16,6 +17,7 @@ class OS_Switch : public OS
   PowerSwitch *power_manager;
   ContextGLSwitchEGL *gl_context;
   JoypadSwitch *joypad;
+  AudioDriverSwitch driver_switch;
   String switch_execpath;
 
 protected:

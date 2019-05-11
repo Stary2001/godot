@@ -399,4 +399,5 @@ OS_Switch::OS_Switch()
 	input = nullptr;
 	power_manager = nullptr;
 	gl_context = nullptr;
+	AudioDriverManager::add_driver(&driver_switch);
 }
