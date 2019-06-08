@@ -31,10 +31,10 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
-#ifdef win32
-	#include <alloca.h> // This file uses alloca. Include alloca.h. Please.
-#else
+#ifdef WIN32
 	#include <malloc.h>
+#else
+	#include <alloca.h> // This file uses alloca. Include alloca.h. Please.
 #endif
 
 #include "core/math/face3.h"
