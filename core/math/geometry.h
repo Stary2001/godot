@@ -31,7 +31,12 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
-#include <alloca.h> // This file uses alloca. Include alloca.h. Please.
+#ifdef win32
+	#include <alloca.h> // This file uses alloca. Include alloca.h. Please.
+#else
+	#include <malloc.h>
+#endif
+
 #include "core/math/face3.h"
 #include "core/math/rect2.h"
 #include "core/math/triangulate.h"
