@@ -31,7 +31,10 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
+#ifdef HORIZON_ENABLED
 #include <alloca.h> // This file uses alloca. Include alloca.h. Please.
+#endif
+
 #include "core/math/face3.h"
 #include "core/math/rect2.h"
 #include "core/math/triangulate.h"
